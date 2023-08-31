@@ -25,15 +25,11 @@ services:
       ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST}
 
   filebeat:
-    build:
-      context: ./filebeat
-      dockerfile: Dockerfile
+    build: ./filebeat
     volumes:
       - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
-      - ./path/on/host/to/spring/app/logs:/app/logs
     environment:
       - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}
-
 
   spring-app:
     build: .
@@ -41,4 +37,4 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./path/on/host/to/spring/app/logs:/app/logs # Map host directory to container directory
+      - ./path/on/host/to/spring/app/logs:/app/logs
