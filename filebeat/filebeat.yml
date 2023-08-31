@@ -1,0 +1,7 @@
+filebeat.inputs:
+  - type: log
+    paths:
+      - /app/logs/app.log # This should match the volume in the Docker Compose file
+
+output.logstash:
+  hosts: ["logstash:5044"]
