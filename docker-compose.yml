@@ -25,12 +25,12 @@ services:
       ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST}
 
   filebeat:
-  build: ./filebeat
-  volumes:
-    - ./path/on/host/to/spring/app/logs:/app/logs
-    - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+    build: ./filebeat
+    volumes:
+      - ./path/on/host/to/spring/app/logs:/app/logs
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
     environment:
-      - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}
+        - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}
 
   spring-app:
     build: .
